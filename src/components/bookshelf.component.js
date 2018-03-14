@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Shelf from './shelf.component';
 import * as BooksAPI from '../data-source/BooksAPI';
-
 import '../assets/styles/bookshelf.css';
 import '../App.css';
 
