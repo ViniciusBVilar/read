@@ -45,7 +45,7 @@ class Book extends Component {
             id: '',
             shelf: ''
         }
-    }
+    };
 
     render() {
         console.log('<>><<>>', this.props.shelf);

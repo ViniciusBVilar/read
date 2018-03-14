@@ -9,7 +9,7 @@ class BooksList extends Component {
 
   state = {
     shelfs: {}
-  }
+  };
 
   componentDidMount() {
     BooksAPI.getAll()
@@ -18,7 +18,7 @@ class BooksList extends Component {
   }
 
   defineShelf(book) {
-    const currentlyBookshelf = this.state.shelfs[book.shelf] ? 
+    const currentlyBookshelf = this.state.shelfs[book.shelf] ?
     [this.state.shelfs[book.shelf]] : [book];
     this.state.shelfs[book.shelf] = currentlyBookshelf.push(book);
     return this.state.shelfs;

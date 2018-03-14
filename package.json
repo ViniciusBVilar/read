@@ -2,11 +2,6 @@
   "name": "read",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
-    "react-scripts": "1.1.1"
-  },
   "scripts": {
     "start": "yarn run lint && yarn run react-scripts start",
     "build:start": "react-scripts build && yarn start",
@@ -15,9 +10,15 @@
     "eject": "react-scripts eject",
     "lint": "./node_modules/.bin/eslint src/**/*.js"
   },
+  "dependencies": {
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-scripts": "1.1.1"
+  },
   "devDependencies": {
     "eslint": "^4.18.2",
-    "eslint-plugin-react": "^7.7.0"
+    "eslint-plugin-react": "^7.7.0",
+    "prop-types": "^15.6.1"
   },
   "engines": {
     "node": ">= 8.9.0",
