@@ -9,17 +9,17 @@ class BooksList extends Component {
 
   state = {
     shelfs: {}
-  };
+  }
 
   componentDidMount() {
     BooksAPI.getAll()
-    .then((books) => books.map((book) => this.defineShelf(book) ))
-    .then(() => this.setState({ shelfs: this.state.shelfs }));
+      .then((books) => books.map((book) => this.defineShelf(book) ))
+      .then(() => this.setState({ shelfs: this.state.shelfs }));
   }
 
   defineShelf(book) {
     const currentlyBookshelf = this.state.shelfs[book.shelf] ?
-    [this.state.shelfs[book.shelf]] : [book];
+      [this.state.shelfs[book.shelf]] : [book];
     this.state.shelfs[book.shelf] = currentlyBookshelf.push(book);
     return this.state.shelfs;
   }
