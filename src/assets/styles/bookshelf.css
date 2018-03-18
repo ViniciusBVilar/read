@@ -1,3 +1,19 @@
+.bookshelf-title {
+    padding: 16px 16px;
+    background: #2e7c31;
+    text-align: left;
+  }
+.bookshelf-title h1 {
+  font-weight: 400;
+  margin: 0;
+  color: white;
+}
+
+.bookshelf-content {
+  padding: 0 0 80px;
+  flex: 1;
+}
+
 .bookshelf {
   padding: 0 10px 20px;
 }
@@ -17,7 +33,7 @@
 
 /* books grid */
 
-.bookshelf-grid {
+.books-grid {
   list-style-type: none;
   padding: 0;
   margin: 0;
@@ -26,7 +42,7 @@
   justify-content: center;
   flex-wrap: wrap;
 }
-.bookshelf-grid li {
+.books-grid li {
   padding: 10px 15px;
   text-align: left;
 }

@@ -1,39 +1,23 @@
-.list-books-title {
-    padding: 10px 0;
-    background: #2e7c31;
-    text-align: center;
-  }
-.list-books-title h1 {
-  font-weight: 400;
-  margin: 0;
-  color: white;
-}
-
-.list-books-content {
-  padding: 0 0 80px;
-  flex: 1;
-}
-
-.bookshelf {
+.shelf {
   padding: 0 10px 20px;
 }
 
 @media (min-width: 600px) {
-  .bookshelf {
+  .shelf {
     padding: 0 20px 40px;
   }
 }
 
-.bookshelf-title {
+.shelf-title {
   border-bottom: 1px solid #dedede;
 }
-.bookshelf-books {
+.shelf-books {
   text-align: center;
 }
 
 /* books grid */
 
-.books-grid {
+.shelf-grid {
   list-style-type: none;
   padding: 0;
   margin: 0;
@@ -42,7 +26,7 @@
   justify-content: center;
   flex-wrap: wrap;
 }
-.books-grid li {
+.shelf-grid li {
   padding: 10px 15px;
   text-align: left;
 }
