@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import * as BooksAPI from '../data-source/BooksAPI';
+import Book from './book.component';
 
 import '../assets/styles/bookshelf.css';
 import '../App.css';
@@ -13,7 +15,7 @@ class SearchList extends Component {
   }
 
   state = {
-    query: '',
+    books: [],
       /*An array containing all the country names in the world:*/
     categories: ['Android', 'Art', 'Artificial Intelligence', 'Astronomy', 'Austen', 'Baseball', 'Basketball',
       'Bhagat', 'Biography', 'Brief', 'Business', 'Camus', 'Cervantes', 'Christie', 'Classics', 'Comics', 'Cook',
@@ -26,21 +28,12 @@ class SearchList extends Component {
       'Travel', 'Ultimate', 'Virtual Reality', 'Web Development', 'iOS']
   }
 
-  updateQuery = (query) => {
-    console.log('query ', query);
-    this.setState({ query: query.trim() });
+  search(category) {
+    console.log('inp.value', category);
+    BooksAPI.search(category).then((books) => this.setState({ books }));
   }
 
-  cleanQuery = () => {
-    this.setState({ query: '' });
-  }
-
-  handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(e);
-  }
-
-  autocomplete(categories) {
+  autocomplete(categories, clickCallBack) {
     /*the autocomplete function takes two arguments,
     the text field element and an array of possible autocompleted values:*/
     let currentFocus;
@@ -68,7 +61,7 @@ class SearchList extends Component {
           b.innerHTML = '<strong>' + categories[i].substr(0, val.length) + '</strong>';
           b.innerHTML += categories[i].substr(val.length);
           /*insert a input field that will hold the current array item's value:*/
-          b.innerHTML += `<input type='hidden' value='' + categories[i] + ''>`;
+          b.innerHTML += `<input type='hidden' value=${categories[i]}>`;
           /*execute a function when someone clicks on the item value (DIV element):*/
           b.addEventListener('click', function(e) {
             /*insert the value for the autocomplete text field:*/
@@ -76,6 +69,8 @@ class SearchList extends Component {
             /*close the list of autocompleted values,
             (or any other open lists of autocompleted values:*/
             closeAllLists();
+            // triggers search events
+            clickCallBack(inp.value);
           });
           a.appendChild(b);
         }
@@ -118,15 +113,15 @@ class SearchList extends Component {
     }
     function removeActive(x) {
       /*a function to remove the 'active' class from all autocomplete items:*/
-      for (var i = 0; i < x.length; i++) {
+      for (let i = 0; i < x.length; i++) {
         x[i].classList.remove('autocomplete-active');
       }
     }
     function closeAllLists(elmnt) {
       /*close all autocomplete lists in the document,
       except the one passed as an argument:*/
-      var x = document.getElementsByClassName('autocomplete-items');
-      for (var i = 0; i < x.length; i++) {
+      let x = document.getElementsByClassName('autocomplete-items');
+      for (let i = 0; i < x.length; i++) {
         if (elmnt !== x[i] && elmnt !== inp) {
           x[i].parentNode.removeChild(x[i]);
         }
@@ -139,7 +134,7 @@ class SearchList extends Component {
   }
 
   componentDidMount() {
-    this.autocomplete(this.state.categories);
+    this.autocomplete(this.state.categories, (category) => this.search(category));
   }
 
   render() {
@@ -157,7 +152,11 @@ class SearchList extends Component {
           </form>
         </div>
         <div className='bookshelf-content'>
-
+        {this.state.books.map((book, index) => (
+          <li key={index}>
+            <Book book={book}/>
+          </li>
+          ))}
         </div>
       </div>
     );

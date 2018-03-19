@@ -28,8 +28,6 @@ class Bookshelf extends Component {
         console.log('--.....-', this.shelfs);
         this.setState({ shelfs: this.shelfs });
       });
-    BooksAPI.search('fitness').then((i) => console.log('i: ', i));
-    BooksAPI.update({id:'zpQ4Vv30fAgC'}, 'wantToRead').then((i) => console.log('i: ', i));
   }
 
   render() {

@@ -58,17 +58,19 @@ class Book extends Component {
       <div>
         <div className="book">
           <div className='book-cover-img' style={{
-            backgroundImage: `url(${this.props.book.imageLinks.smallThumbnail})`
+            backgroundImage: `url(${this.props.book.imageLinks ?
+              this.props.book.imageLinks.smallThumbnail :
+              '../assets/img/no-cover-placeholder.jpg'})`
           }}/>
         </div>
         <h1 className="book-title">{this.props.book.title}</h1>
         <h2 className="book-title">{this.props.book.subtitle}</h2>
         <div>
-          {this.props.book.authors.map((author, index) => (
+          {this.props.book.authors &&
+            this.props.book.authors.map((author, index) => (
             <h1  key={index}
               className="book-authors">{author}</h1>
-          ))
-          }
+          ))}
         </div>
       </div>
     );
