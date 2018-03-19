@@ -147,7 +147,7 @@ class SearchList extends Component {
           <Link className='back-search' to='/'>Back</Link>
           <form autoComplete='off'>
             <div className='autocomplete' style={{width:`${300}px`}}>
-              <input id='myInput' type='text' name='myCountry' placeholder='Search books by type'/>
+              <input id='myInput' type='text' name='myCountry' placeholder='Search books by category'/>
             </div>
           </form>
         </div>
