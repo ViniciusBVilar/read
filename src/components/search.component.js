@@ -16,7 +16,7 @@ class SearchList extends Component {
 
   state = {
     books: [],
-      /*An array containing all the country names in the world:*/
+    /*An array containing all the country names in the world:*/
     categories: ['Android', 'Art', 'Artificial Intelligence', 'Astronomy', 'Austen', 'Baseball', 'Basketball',
       'Bhagat', 'Biography', 'Brief', 'Business', 'Camus', 'Cervantes', 'Christie', 'Classics', 'Comics', 'Cook',
       'Cricket', 'Cycling', 'Desai', 'Design', 'Development', 'Digital Marketing', 'Drama', 'Drawing', 'Dumas',
@@ -152,10 +152,10 @@ class SearchList extends Component {
           </form>
         </div>
         <div className='bookshelf-content'>
-        {this.state.books.map((book, index) => (
-          <li key={index}>
-            <Book book={book}/>
-          </li>
+          {this.state.books.map((book, index) => (
+            <li key={index}>
+              <Book book={book}/>
+            </li>
           ))}
         </div>
       </div>
