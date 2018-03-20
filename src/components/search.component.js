@@ -145,13 +145,12 @@ class SearchList extends Component {
 
   componentDidMount() {
     BooksAPI.getAll()
-    .then((books) => books.map((book) => this.shelfs[book.shelf].push(book)))
-    .then(() => this.setState({ shelfs: this.shelfs }));
+      .then((books) => books.map((book) => this.shelfs[book.shelf].push(book)))
+      .then(() => this.setState({ shelfs: this.shelfs }));
     this.autocomplete(this.state.categories, (category) => this.search(category));
   }
 
   renderBook(book, index) {
-    debugger;
     if (this.state.shelfs) {
       Object.keys(this.state.shelfs).map((shelf) => this.state.shelfs[shelf].map(
         (b) => {if (book.id === b.id) {
@@ -160,7 +159,7 @@ class SearchList extends Component {
           book['shelf'] = b.shelf;
           console.log('book.id === b.id ',book, book['shelf'], b.shelf);
         }}
-      ))
+      ));
     }
     return (
       <li key={index}>
