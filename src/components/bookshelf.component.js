@@ -24,10 +24,7 @@ class Bookshelf extends Component {
   componentDidMount() {
     BooksAPI.getAll()
       .then((books) => books.map((book) => this.shelfs[book.shelf].push(book)))
-      .then(() => {
-        console.log('--.....-', this.shelfs);
-        this.setState({ shelfs: this.shelfs });
-      });
+      .then(() => this.setState({ shelfs: this.shelfs }));
   }
 
   render() {

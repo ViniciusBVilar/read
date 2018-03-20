@@ -11,7 +11,6 @@ class Shelf extends Component {
   };
 
   render() {
-    console.log('aaaaaaasss', this.props.shelfbooks);
     return (
       <div className="shelf">
         <div className="shelf-books">

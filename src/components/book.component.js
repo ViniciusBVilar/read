@@ -19,7 +19,6 @@ class Book extends Component {
   }
 
   render() {
-    console.log('<>><<>>', this.props.book);
     return (
       <div>
         <div className="book">
@@ -34,7 +33,6 @@ class Book extends Component {
                 <a onClick={() => this.update('currentlyReading')} >{this.checkBookshelf('currentlyReading') ? <p>&#x2713; Currently reading</p> : <p>Currently reading</p> }</a>
                 <a onClick={() => this.update('wantToRead')} >{this.checkBookshelf('wantToRead') ? <p>&#x2713; Want to read</p> : <p>Want to read</p> }</a>
                 <a onClick={() => this.update('read')} >{this.checkBookshelf('read') ? <p>&#x2713; Read</p> : <p>Read</p> }</a>
-                <a onClick={() => this.update('none')} >{this.checkBookshelf('none') ? <p>&#x2713; None</p> : <p>None</p> }</a>
               </div>
               <div className="book-shelf-changer">
                 <div className="select"/>
