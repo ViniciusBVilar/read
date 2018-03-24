@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import Book from './book.component';
+import React from 'react';
+import Book from '../common/book.component';
 import PropTypes from 'prop-types';
-import '../assets/styles/shelf.css';
+import '../../assets/styles/shelf.css';
 
-class Shelf extends Component {
+class Shelf extends React.Component {
 
   static propTypes = {
     shelf: PropTypes.string.isRequired,

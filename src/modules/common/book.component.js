@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import * as BooksAPI from '../data-source/BooksAPI';
-import '../assets/styles/book.css';
-import '../App.css';
+import * as BooksAPI from '../../data-source/BooksAPI';
+import '../../assets/styles/book.css';
 
 class Book extends Component {
 
@@ -27,18 +26,20 @@ class Book extends Component {
               this.props.book.imageLinks.smallThumbnail :
               '../assets/img/no-cover-placeholder.jpg'})`
           }}>
-            <div className="dropdown">
+            <div className="dropdown-fab">
               <div className="dropdown-content">
-                <h3>Move to...</h3>
-                <a onClick={() => this.update('currentlyReading')} >{
-                  this.checkBookshelf('currentlyReading') ? <p>&#x2713; Currently reading</p> : <p>Currently reading</p>
-                }</a>
-                <a onClick={() => this.update('wantToRead')} >{
-                  this.checkBookshelf('wantToRead') ? <p>&#x2713; Want to read</p> : <p>Want to read</p>
-                }</a>
-                <a onClick={() => this.update('read')} >{
-                  this.checkBookshelf('read') ? <p>&#x2713; Read</p> : <p>Read</p>
-                }</a>
+                <div className="dropdown">
+                  <h3>Move to...</h3>
+                  <a onClick={() => this.update('currentlyReading')} >{
+                    this.checkBookshelf('currentlyReading') ? <p>&#x2713; Currently reading</p> : <p>Currently reading</p>
+                  }</a>
+                  <a onClick={() => this.update('wantToRead')} >{
+                    this.checkBookshelf('wantToRead') ? <p>&#x2713; Want to read</p> : <p>Want to read</p>
+                  }</a>
+                  <a onClick={() => this.update('read')} >{
+                    this.checkBookshelf('read') ? <p>&#x2713; Read</p> : <p>Read</p>
+                  }</a>
+                </div>
               </div>
               <div className="book-shelf-changer">
                 <div className="select"/>

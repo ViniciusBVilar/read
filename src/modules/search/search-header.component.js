@@ -1,53 +1,29 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import * as BooksAPI from '../data-source/BooksAPI';
-import Book from './book.component';
+import { PropTypes } from 'prop-types';
 
-import '../assets/styles/bookshelf.css';
-import '../App.css';
-
-class SearchList extends Component {
+class SearchHeader extends React.Component {
 
   static propTypes = {
-    // contacts: PropTypes.array.isRequired,
-    // onDeleteContact: PropTypes.func.isRequired,
-  }
+    search: PropTypes.func.isRequired,
+  };
 
-  state = {
-    shelfs: {
-      currentlyReading: [],
-      wantToRead: [],
-      read: []
-    },
-    books: [],
-    /*An array containing all the country names in the world:*/
-    categories: ['Android', 'Art', 'Artificial Intelligence', 'Astronomy', 'Austen', 'Baseball', 'Basketball',
-      'Bhagat', 'Biography', 'Brief', 'Business', 'Camus', 'Cervantes', 'Christie', 'Classics', 'Comics', 'Cook',
-      'Cricket', 'Cycling', 'Desai', 'Design', 'Development', 'Digital Marketing', 'Drama', 'Drawing', 'Dumas',
-      'Education', 'Everything', 'Fantasy', 'Film', 'Finance', 'First', 'Fitness', 'Football', 'Future', 'Games',
-      'Gandhi', 'Homer', 'Horror', 'Hugo', 'Ibsen', 'Journey', 'Kafka', 'King', 'Lahiri', 'Larsson', 'Learn',
-      'Literary Fiction', 'Make', 'Manage', 'Marquez', 'Money', 'Mystery', 'Negotiate', 'Painting', 'Philosophy',
-      'Photography', 'Poetry', 'Production', 'Programming', 'React', 'Redux', 'River', 'Robotics', 'Rowling',
-      'Satire', 'Science Fiction', 'Shakespeare', 'Singh', 'Swimming', 'Tale', 'Thrun', 'Time', 'Tolstoy',
-      'Travel', 'Ultimate', 'Virtual Reality', 'Web Development', 'iOS']
-  }
-
-  shelfs = {
-    currentlyReading: [],
-    wantToRead: [],
-    read: []
-  }
-
-  search(category) {
-    BooksAPI.search(category).then((books) => this.setState({ books }));
-  }
+  /*An array containing all the country names in the world:*/
+  categories = ['Android', 'Art', 'Artificial Intelligence', 'Astronomy', 'Austen', 'Baseball', 'Basketball',
+  'Bhagat', 'Biography', 'Brief', 'Business', 'Camus', 'Cervantes', 'Christie', 'Classics', 'Comics', 'Cook',
+  'Cricket', 'Cycling', 'Desai', 'Design', 'Development', 'Digital Marketing', 'Drama', 'Drawing', 'Dumas',
+  'Education', 'Everything', 'Fantasy', 'Film', 'Finance', 'First', 'Fitness', 'Football', 'Future', 'Games',
+  'Gandhi', 'Homer', 'Horror', 'Hugo', 'Ibsen', 'Journey', 'Kafka', 'King', 'Lahiri', 'Larsson', 'Learn',
+  'Literary Fiction', 'Make', 'Manage', 'Marquez', 'Money', 'Mystery', 'Negotiate', 'Painting', 'Philosophy',
+  'Photography', 'Poetry', 'Production', 'Programming', 'React', 'Redux', 'River', 'Robotics', 'Rowling',
+  'Satire', 'Science Fiction', 'Shakespeare', 'Singh', 'Swimming', 'Tale', 'Thrun', 'Time', 'Tolstoy',
+  'Travel', 'Ultimate', 'Virtual Reality', 'Web Development', 'iOS']
 
   autocomplete(categories, clickCallBack) {
     /*the autocomplete function takes two arguments,
     the text field element and an array of possible autocompleted values:*/
     let currentFocus;
-    const inp = document.getElementById('myInput');
+    const inp = document.getElementById('autoCompleteInput');
     /*execute a function when someone writes in the text field:*/
     inp.addEventListener('input', function(e) {
       let a, b, i, val = this.value;
@@ -144,50 +120,22 @@ class SearchList extends Component {
   }
 
   componentDidMount() {
-    BooksAPI.getAll()
-      .then((books) => books.map((book) => this.shelfs[book.shelf].push(book)))
-      .then(() => this.setState({ shelfs: this.shelfs }));
-    this.autocomplete(this.state.categories, (category) => this.search(category));
-  }
-
-  renderBook(book, index) {
-    if (this.state.shelfs) {
-      Object.keys(this.state.shelfs).map((shelf) => this.state.shelfs[shelf].map(
-        (b) => {if (book.id === b.id) {
-          console.log('book.id === b.id ',book.id, b.id);
-          console.log('book.id === b.id ',book, book['shelf'], b.shelf);
-          book['shelf'] = b.shelf;
-          console.log('book.id === b.id ',book, book['shelf'], b.shelf);
-        }}
-      ));
-    }
-    return (
-      <li key={index}>
-        <Book book={book}/>
-      </li>
-    );
+    this.autocomplete(this.categories, (category) => this.props.search(category));
   }
 
   render() {
-    // const { contacts, onDeleteContact } = this.props
-    const { query } = this.state;
-
     return (
-      <div>
-        <div className='search-books-bar'>
+      <div className='search-books-bar'>
           <Link className='back-search' to='/'>Back</Link>
           <form autoComplete='off'>
             <div className='autocomplete'>
-              <input id='myInput' type='text' name='myCountry' placeholder='Search books by category'/>
+              <input id='autoCompleteInput' type='text' name='myCountry' placeholder='Search books by category'/>
             </div>
           </form>
         </div>
-        <div className='bookshelf-content'>
-          {this.state.books.map((book, index) => this.renderBook(book, index))}
-        </div>
-      </div>
     );
   }
+
 }
 
-export default SearchList;
+export default SearchHeader;
