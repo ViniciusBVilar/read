@@ -50,7 +50,7 @@ class SearchList extends React.Component {
   render() {
     return (
       <div>
-        <SearchHeader search={this.search}/>
+        <SearchHeader search={this.search.bind(this)}/>
         <div className='bookshelf-content'>
           {this.state.books.map((book, index) => this.renderBook(book, index))}
         </div>
