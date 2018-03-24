@@ -62,12 +62,8 @@ font-size: 0.8em;
     flex-shrink: 0;
   }
 
-  /* Dropdown */
-.dropbtn:hover, .dropbtn:focus {
-  background-color: #2980B9;
-}
-
-.dropdown {
+ /* Dropdown */
+ .dropdown {
   position: relative;
   display: inline-block;
 }
@@ -75,9 +71,8 @@ font-size: 0.8em;
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #f1f1f1;
-  min-width: 160px;
-  overflow: auto;
+  background-color: #f9f9f9;
+  min-width: max-content;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
 }
@@ -87,8 +82,17 @@ font-size: 0.8em;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
+  cursor: pointer;
 }
 
-.dropdown a:hover {
-  background-color: #ddd
+.dropdown-content a:hover {
+  background-color: #f1f1f1
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover {
+  background-color: #3e8e41;
 }
