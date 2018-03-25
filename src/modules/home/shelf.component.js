@@ -1,13 +1,14 @@
-import React, { Component } from 'react';
-import Book from './book.component';
+import React from 'react';
+import Book from '../common/book.component';
 import PropTypes from 'prop-types';
-import '../assets/styles/shelf.css';
+import '../../assets/styles/shelf.css';
 
-class Shelf extends Component {
+class Shelf extends React.Component {
 
   static propTypes = {
     shelf: PropTypes.string.isRequired,
     shelfbooks: PropTypes.array.isRequired,
+    updateCallback: PropTypes.func.isRequired,
   };
 
   render() {
@@ -18,7 +19,7 @@ class Shelf extends Component {
           <div className="shelf-grid">
             {this.props.shelfbooks.map((book, index) => (
               <li key={index}>
-                <Book book={book}/>
+                <Book book={book} updateCallback={this.props.updateCallback.bind(this)} />
               </li>
             ))}
           </div>
