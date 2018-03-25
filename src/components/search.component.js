@@ -15,8 +15,13 @@ class SearchList extends Component {
   }
 
   state = {
+    shelfs: {
+      currentlyReading: [],
+      wantToRead: [],
+      read: []
+    },
     books: [],
-      /*An array containing all the country names in the world:*/
+    /*An array containing all the country names in the world:*/
     categories: ['Android', 'Art', 'Artificial Intelligence', 'Astronomy', 'Austen', 'Baseball', 'Basketball',
       'Bhagat', 'Biography', 'Brief', 'Business', 'Camus', 'Cervantes', 'Christie', 'Classics', 'Comics', 'Cook',
       'Cricket', 'Cycling', 'Desai', 'Design', 'Development', 'Digital Marketing', 'Drama', 'Drawing', 'Dumas',
@@ -28,8 +33,13 @@ class SearchList extends Component {
       'Travel', 'Ultimate', 'Virtual Reality', 'Web Development', 'iOS']
   }
 
+  shelfs = {
+    currentlyReading: [],
+    wantToRead: [],
+    read: []
+  }
+
   search(category) {
-    console.log('inp.value', category);
     BooksAPI.search(category).then((books) => this.setState({ books }));
   }
 
@@ -134,7 +144,28 @@ class SearchList extends Component {
   }
 
   componentDidMount() {
+    BooksAPI.getAll()
+      .then((books) => books.map((book) => this.shelfs[book.shelf].push(book)))
+      .then(() => this.setState({ shelfs: this.shelfs }));
     this.autocomplete(this.state.categories, (category) => this.search(category));
+  }
+
+  renderBook(book, index) {
+    if (this.state.shelfs) {
+      Object.keys(this.state.shelfs).map((shelf) => this.state.shelfs[shelf].map(
+        (b) => {if (book.id === b.id) {
+          console.log('book.id === b.id ',book.id, b.id);
+          console.log('book.id === b.id ',book, book['shelf'], b.shelf);
+          book['shelf'] = b.shelf;
+          console.log('book.id === b.id ',book, book['shelf'], b.shelf);
+        }}
+      ));
+    }
+    return (
+      <li key={index}>
+        <Book book={book}/>
+      </li>
+    );
   }
 
   render() {
@@ -146,17 +177,13 @@ class SearchList extends Component {
         <div className='search-books-bar'>
           <Link className='back-search' to='/'>Back</Link>
           <form autoComplete='off'>
-            <div className='autocomplete' style={{width:`${300}px`}}>
-              <input id='myInput' type='text' name='myCountry' placeholder='Search books by type'/>
+            <div className='autocomplete'>
+              <input id='myInput' type='text' name='myCountry' placeholder='Search books by category'/>
             </div>
           </form>
         </div>
         <div className='bookshelf-content'>
-        {this.state.books.map((book, index) => (
-          <li key={index}>
-            <Book book={book}/>
-          </li>
-          ))}
+          {this.state.books.map((book, index) => this.renderBook(book, index))}
         </div>
       </div>
     );
