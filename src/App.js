@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import BookList from './modules/home/book-list.container';
+import Bookshelf from './modules/home/bookshelf.component';
 import SearchList from './modules/search/search.component';
 import { Route } from 'react-router-dom'
 
@@ -9,7 +9,7 @@ class App extends Component {
     return (
       <div className="app">
         <Route exact path="/" render={() => (
-          <BookList />
+          <Bookshelf />
         )}/>
         <Route path="/search" render={({ history }) => (
           <SearchList

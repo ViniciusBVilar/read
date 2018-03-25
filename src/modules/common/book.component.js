@@ -7,30 +7,34 @@ class Book extends Component {
 
   static propTypes = {
     book: PropTypes.object.isRequired,
+    updateCallback: PropTypes.func.isRequired,
   };
 
-  shelfs = ['currentlyReading','wantToread', 'read'];
+  shelfs = ['currentlyReading','wantToRead', 'read'];
 
   update(category) {
-    BooksAPI.update({ id: this.props.book.id }, category).then((books) => console.log('eee', books));
+    BooksAPI.update({ id: this.props.book.id }, category)
+      .then((books) => {
+        this.props.updateCallback(books)
+      });
   }
 
   checkBookshelf(shelf) {
     return this.props.book.shelf && this.props.book.shelf === shelf ?
-     <p>&#x2713; Currently reading</p> : <p>Currently reading</p>;
+     <p>&#x2713; {shelf}</p> : <p>{shelf}</p>;
   }
 
   render() {
     return (
-      <div>
+      <div className='book'>
         <img className='book-cover-img' src={this.props.book.imageLinks ?
           this.props.book.imageLinks.smallThumbnail :
           '../assets/img/no-cover-placeholder.jpg'}></img>
         <div className="dropdown">
           <div className="dropdown-content">
             <h3>Move to...</h3>
-            {this.shelfs.map((shelf) => (
-              <a onClick={() => this.update(shelf)} >{this.checkBookshelf(shelf)}</a>
+            {this.shelfs.map((shelf, index) => (
+              <a key={index} onClick={() => this.update(shelf)} >{this.checkBookshelf(shelf)}</a>
             ))}
           </div>
           <div className="book-shelf-changer">
@@ -42,7 +46,7 @@ class Book extends Component {
           <h2 className="book-title">{this.props.book.subtitle}</h2>
           {this.props.book.authors &&
             this.props.book.authors.map((author, index) => (
-              <h1  key={index}
+              <h1 key={index}
                 className="book-authors">{author}</h1>
             ))}
         </div>

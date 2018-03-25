@@ -2,6 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
 
+import '../../assets/styles/search.css';
+import '../../App.css';
+
 class SearchHeader extends React.Component {
 
   static propTypes = {
@@ -129,9 +132,10 @@ class SearchHeader extends React.Component {
           <Link className='back-search' to='/'>Back</Link>
           <form autoComplete='off'>
             <div className='autocomplete'>
-              <input id='autoCompleteInput' type='text' name='myCountry' placeholder='Search books by category'/>
+              <input id='autoCompleteInput' type='text' name='searchField' placeholder='Search books by category' autoFocus/>
             </div>
           </form>
+            <button id='autoCompleteSubmit' type='submit' className ='search' name='searchFieldSubmit' alt='search' onClick={console.log('asdadad')}/>
         </div>
     );
   }

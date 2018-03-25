@@ -8,6 +8,7 @@ import '../../assets/styles/search.css';
 
 class SearchList extends React.Component {
 
+
   state = {
     shelfs: {
       currentlyReading: [],
@@ -24,7 +25,6 @@ class SearchList extends React.Component {
   }
 
   search(category) {
-    debugger;
     BooksAPI.search(category).then((books) => this.setState({ books }));
   }
 
@@ -41,18 +41,18 @@ class SearchList extends React.Component {
       ))
 
     return (
-      <div className='search-books-results' key={index}>
-        <Book book={book}/>
-      </div>
+      <Book key='index' book={book}/>
     );
   }
 
   render() {
     return (
-      <div>
+      <div className="shelf">
         <SearchHeader search={this.search.bind(this)}/>
-        <div className='bookshelf-content'>
-          {this.state.books.map((book, index) => this.renderBook(book, index))}
+        <div className="shelf-books">
+          <div className="shelf-grid">
+            {this.state.books && this.state.books.map((book, index) => this.renderBook(book, index))}
+          </div>
         </div>
       </div>
     );

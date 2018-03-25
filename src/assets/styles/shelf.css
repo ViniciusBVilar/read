@@ -18,6 +18,8 @@
 /* books grid */
 
 .shelf-grid {
+  position: relative;
+  top: 48px;
   list-style-type: none;
   padding: 0;
   margin: 0;

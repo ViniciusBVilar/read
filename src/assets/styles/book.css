@@ -1,3 +1,6 @@
+.book {
+  margin: 16px;
+}
 .book-title,
 .book-authors {
 font-size: 0.8em;
@@ -20,8 +23,8 @@ color: #999;
 
 .book-shelf-changer {
   position: absolute;
-  top: -40px;
-  right: 0;
+  top: -36px;
+  right: -8px;
   width: 40px;
   height: 40px;
   border-radius: 50%;

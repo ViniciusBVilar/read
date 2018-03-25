@@ -7,3 +7,6 @@ body {
 body, .app {
   background: white;
 }
+a {
+  text-decoration: none;
+}

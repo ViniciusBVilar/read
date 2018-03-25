@@ -8,6 +8,7 @@ class Shelf extends React.Component {
   static propTypes = {
     shelf: PropTypes.string.isRequired,
     shelfbooks: PropTypes.array.isRequired,
+    updateCallback: PropTypes.func.isRequired,
   };
 
   render() {
@@ -18,7 +19,7 @@ class Shelf extends React.Component {
           <div className="shelf-grid">
             {this.props.shelfbooks.map((book, index) => (
               <li key={index}>
-                <Book book={book}/>
+                <Book book={book} updateCallback={this.props.updateCallback.bind(this)}/>
               </li>
             ))}
           </div>
