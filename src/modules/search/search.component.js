@@ -36,19 +36,19 @@ class SearchList extends React.Component {
 
   renderBook(book, index) {
     this.state.shelfs &&
-      Object.keys(this.state.shelfs).map((shelf) => this.state.shelfs[shelf].map(
-        (b) => { book.id === b.id && (book['shelf'] = b.shelf)}
+      Object.keys(this.state.shelfs).map((shelf) => this.state.shelfs[shelf].forEach(
+        (b) => { book.id === b.id && (book['shelf'] = b.shelf) }
       ))
 
     return (
-      <Book key={index} book={book} updateCallback={() => {}}/>
+      <Book key={index} book={book} updateCallback={() => { }} />
     );
   }
 
   render() {
     return (
       <div className="shelf">
-        <SearchHeader search={this.search.bind(this)}/>
+        <SearchHeader search={this.search.bind(this)} />
         <div className="shelf-books">
           <div className="shelf-grid">
             {this.state.books && this.state.books.map((book, index) => this.renderBook(book, index))}

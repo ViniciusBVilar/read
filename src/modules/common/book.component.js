@@ -30,7 +30,8 @@ class Book extends Component {
       <div className='book'>
         <img className='book-cover-img' src={this.props.book.imageLinks ?
           this.props.book.imageLinks.smallThumbnail :
-          '../assets/img/no-cover-placeholder.jpg'}></img>
+          '../assets/img/no-cover-placeholder.jpg'}
+          alt='Book cover'></img>
         <div className="dropdown">
           <div className="dropdown-content">
             <h3>Move to...</h3>

@@ -1,6 +1,5 @@
 import React from 'react';
 import Shelf from './shelf.component';
-import PropTypes from 'prop-types';
 import BookshelfHeader from './bookshelf-header.component';
 import * as BooksAPI from '../../data-source/BooksAPI';
 import { Link } from 'react-router-dom';
@@ -27,7 +26,7 @@ class Bookshelf extends React.Component {
   render() {
     return (
       <div>
-        <BookshelfHeader/>
+        <BookshelfHeader />
         <div className="bookshelf-content">
           {this.shelfs.map((shelf, index) => (
             <Shelf key={index} shelf={shelf} updateCallback={this.getBooks.bind(this)}
@@ -38,7 +37,7 @@ class Bookshelf extends React.Component {
           <Link
             to="/search"
             className="bookshelf-search"
-            >Search</Link>
+          >Search</Link>
         </div>
       </div>
     );

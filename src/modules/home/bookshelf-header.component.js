@@ -7,9 +7,9 @@ class BookshelfHeader extends React.Component {
     return (
       <div className="bookshelf-top">
         <div className="bookshelf-title">
-        <Link
-          to="/"
-        ><h1>Read</h1></Link>
+          <Link
+            to="/"
+          ><h1>Read</h1></Link>
         </div>
       </div>
     );
