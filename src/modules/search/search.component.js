@@ -41,7 +41,7 @@ class SearchList extends React.Component {
       ))
 
     return (
-      <Book key='index' book={book}/>
+      <Book key={index} book={book} updateCallback={() => {}}/>
     );
   }
 

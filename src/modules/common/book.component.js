@@ -10,10 +10,11 @@ class Book extends Component {
     updateCallback: PropTypes.func.isRequired,
   };
 
-  shelfs = ['currentlyReading','wantToRead', 'read'];
+  shelfs = ['currentlyReading','wantToRead', 'read', 'none'];
 
-  update(category) {
-    BooksAPI.update({ id: this.props.book.id }, category)
+  update(shelf) {
+    this.checkBookshelf(shelf);
+    BooksAPI.update({ id: this.props.book.id }, shelf)
       .then((books) => {
         this.props.updateCallback(books)
       });

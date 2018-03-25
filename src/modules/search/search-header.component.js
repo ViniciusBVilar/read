@@ -129,14 +129,14 @@ class SearchHeader extends React.Component {
   render() {
     return (
       <div className='search-books-bar'>
-          <Link className='back-search' to='/'>Back</Link>
-          <form autoComplete='off'>
-            <div className='autocomplete'>
-              <input id='autoCompleteInput' type='text' name='searchField' placeholder='Search books by category' autoFocus/>
-            </div>
-          </form>
-            <button id='autoCompleteSubmit' type='submit' className ='search' name='searchFieldSubmit' alt='search' onClick={console.log('asdadad')}/>
-        </div>
+        <Link className='back-search' to='/'>Back</Link>
+        <form autoComplete='off'>
+          <div className='autocomplete'>
+            <input id='autoCompleteInput' type='text' name='searchField' placeholder='Search books by category' autoFocus/>
+          </div>
+        </form>
+          <button id='autoCompleteSubmit' type='submit' className ='search' name='searchFieldSubmit' alt='search' onClick={() => this.props.search(document.getElementById('autoCompleteInput').value)}/>
+      </div>
     );
   }
 
