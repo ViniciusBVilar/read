@@ -15,7 +15,8 @@ class SearchList extends React.Component {
       wantToRead: [],
       read: []
     },
-    books: []
+    books: [],
+    error: ''
   }
 
   shelfs = {
@@ -25,7 +26,8 @@ class SearchList extends React.Component {
   }
 
   search(category) {
-    BooksAPI.search(category).then((books) => this.setState({ books }));
+    BooksAPI.search(category).then((books) => books.error ?
+      this.setState({ error: books.error, books: [] }) : this.setState({ books , error: ''}));
   }
 
   componentDidMount() {
@@ -37,8 +39,8 @@ class SearchList extends React.Component {
   renderBook(book, index) {
     this.state.shelfs &&
       Object.keys(this.state.shelfs).map((shelf) => this.state.shelfs[shelf].forEach(
-        (b) => { book.id === b.id && (book['shelf'] = b.shelf) }
-      ))
+        (b) => book.id === b.id && (book['shelf'] = b.shelf)
+      ));
 
     return (
       <Book key={index} book={book} updateCallback={() => { }} />
@@ -51,7 +53,9 @@ class SearchList extends React.Component {
         <SearchHeader search={this.search.bind(this)} />
         <div className="shelf-books">
           <div className="shelf-grid">
-            {this.state.books && this.state.books.map((book, index) => this.renderBook(book, index))}
+            {(this.state.books && !this.state.error) &&
+              this.state.books.map((book, index) => this.renderBook(book, index))}
+            {(this.state.error && this.state.books.length <= 0) && <h1>{this.state.error}</h1>}
           </div>
         </div>
       </div>
