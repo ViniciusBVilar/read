@@ -10,19 +10,17 @@ class Book extends Component {
     updateCallback: PropTypes.func.isRequired,
   };
 
-  shelfs = ['currentlyReading','wantToRead', 'read', 'none'];
+  shelfs = ['currentlyReading', 'wantToRead', 'read', 'none'];
 
   update(shelf) {
     this.checkBookshelf(shelf);
     BooksAPI.update({ id: this.props.book.id }, shelf)
-      .then((books) => {
-        this.props.updateCallback(books)
-      });
+      .then((books) => this.props.updateCallback(books));
   }
 
   checkBookshelf(shelf) {
     return this.props.book.shelf && this.props.book.shelf === shelf ?
-     <p>&#x2713; {shelf}</p> : <p>{shelf}</p>;
+      <p>✓ {shelf}</p> : <p>{shelf}</p>;
   }
 
   render() {
@@ -31,7 +29,7 @@ class Book extends Component {
         <img className='book-cover-img' src={this.props.book.imageLinks ?
           this.props.book.imageLinks.smallThumbnail :
           '../assets/img/no-cover-placeholder.jpg'}
-          alt='Book cover'></img>
+        alt='Book cover'></img>
         <div className="dropdown">
           <div className="dropdown-content">
             <h3>Move to...</h3>
@@ -40,7 +38,7 @@ class Book extends Component {
             ))}
           </div>
           <div className="book-shelf-changer">
-            <div className="select"/>
+            <div className="select" />
           </div>
         </div>
         <div className="book-title-container">

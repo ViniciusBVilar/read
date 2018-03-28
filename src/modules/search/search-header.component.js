@@ -23,16 +23,17 @@ class SearchHeader extends React.Component {
     'Travel', 'Ultimate', 'Virtual Reality', 'Web Development', 'iOS']
 
   autocomplete(categories, clickCallBack) {
-    /*the autocomplete function takes two arguments,
-    the text field element and an array of possible autocompleted values:*/
     let currentFocus;
     const inp = document.getElementById('autoCompleteInput');
     /*execute a function when someone writes in the text field:*/
     inp.addEventListener('input', function (e) {
-      let a, b, i, val = this.value;
-      /*close any already open lists of autocompleted values*/
+      const val = this.value;
+      let a, b;
+
       closeAllLists();
-      if (!val) { return false; }
+      if (!val) {
+        return false;
+      }
       currentFocus = -1;
       /*create a DIV element that will contain the items (values):*/
       a = document.createElement('DIV');
@@ -40,8 +41,8 @@ class SearchHeader extends React.Component {
       a.setAttribute('class', 'autocomplete-items');
       /*append the DIV element as a child of the autocomplete container:*/
       this.parentNode.appendChild(a);
-      /*for each item in the array...*/
-      for (i = 0; i < categories.length; i++) {
+
+      for (let i = 0; i < categories.length; i++) {
         /*check if the item starts with the same letters as the text field value:*/
         if (categories[i].substr(0, val.length).toUpperCase() === val.toUpperCase()) {
           /*create a DIV element for each matching element:*/
@@ -68,7 +69,10 @@ class SearchHeader extends React.Component {
     /*execute a function presses a key on the keyboard:*/
     inp.addEventListener('keydown', (e) => {
       let x = document.getElementById(this.id + 'autocomplete-list');
-      if (x) x = x.getElementsByTagName('div');
+      if (x) {
+        x = x.getElementsByTagName('div');
+      }
+
       if (e.keyCode === 40) {
         /*If the arrow DOWN key is pressed,
         increase the currentFocus variable:*/
@@ -109,7 +113,7 @@ class SearchHeader extends React.Component {
     function closeAllLists(elmnt) {
       /*close all autocomplete lists in the document,
       except the one passed as an argument:*/
-      let x = document.getElementsByClassName('autocomplete-items');
+      const x = document.getElementsByClassName('autocomplete-items');
       for (let i = 0; i < x.length; i++) {
         if (elmnt !== x[i] && elmnt !== inp) {
           x[i].parentNode.removeChild(x[i]);
@@ -132,10 +136,12 @@ class SearchHeader extends React.Component {
         <Link className='back-search' to='/'>Back</Link>
         <form autoComplete='off'>
           <div className='autocomplete'>
-            <input id='autoCompleteInput' type='text' name='searchField' placeholder='Search books by category' autoFocus />
+            <input id='autoCompleteInput' type='text' name='searchField'
+              placeholder='Search books by category' autoFocus />
           </div>
         </form>
-        <button id='autoCompleteSubmit' type='submit' className='search' name='searchFieldSubmit' alt='search' onClick={() => this.props.search(document.getElementById('autoCompleteInput').value)} />
+        <button id='autoCompleteSubmit' type='submit' className='search' name='searchFieldSubmit'
+          alt='search' onClick={() => this.props.search(document.getElementById('autoCompleteInput').value)} />
       </div>
     );
   }

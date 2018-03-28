@@ -20,15 +20,15 @@ class BookList extends React.Component {
   render() {
     return (
       <div>
-        <BookshelfHeader/>
+        <BookshelfHeader />
         <div className="bookshelf-content">
-          <Bookshelf books={this.state.books}/>
+          <Bookshelf books={this.state.books} />
         </div>
         <div className="open-search">
           <Link
             to="/search"
             className="bookshelf-search"
-            >Search</Link>
+          >Search</Link>
         </div>
       </div>
     );
