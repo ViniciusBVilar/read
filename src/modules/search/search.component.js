@@ -48,14 +48,15 @@ class SearchList extends React.Component {
   }
 
   render() {
+    const { books, error } = this.state
     return (
       <div className="shelf">
         <SearchHeader search={this.search.bind(this)} />
         <div className="shelf-books">
           <div className="shelf-grid">
-            {(this.state.books && !this.state.error) &&
-              this.state.books.map((book, index) => this.renderBook(book, index))}
-            {(this.state.error && this.state.books.length <= 0) && <h1>{this.state.error}</h1>}
+            {(books && !error) &&
+              books.map((book, index) => this.renderBook(book, index))}
+            {(error && books.length <= 0) && <h1>{error}</h1>}
           </div>
         </div>
       </div>
