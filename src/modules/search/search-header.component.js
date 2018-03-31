@@ -35,6 +35,7 @@ class SearchHeader extends React.Component {
 
   handleSubmit(event) {
     this.props.search(document.getElementById('categoryInput').value);
+    //TODO: fix to prevent default form action. The following code is not working
     event.preventDefault();
     return false;
   }
@@ -52,7 +53,6 @@ class SearchHeader extends React.Component {
     }
 
     showingCategories.sort()
-
 
     return (
       <div className='search-books-bar'>
