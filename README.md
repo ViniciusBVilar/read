@@ -13,12 +13,13 @@ To run this project just:
 1. Clone the project or download the files.
 
 2. Assure that you have already installed yarn.
+  Visit: https://yarnpkg.com/lang/en/docs/install/
 
-*Optional: To automatically set yout Node version, use:
+*Optional: To automatically set yout Node version, run:
+(Assure that you have already installed nvm)
 ```
 nvm use
 ```
-  Assure that you have already installed nvm.
 
 ### Installing
 

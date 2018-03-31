@@ -27,7 +27,7 @@ class Bookshelf extends React.Component {
       <div>
         <BookshelfHeader />
         <div className="bookshelf-content">
-          {Object.keys(SHELFS).map((shelf, index) => (
+          {Object.keys(SHELFS).filter(shelf => shelf !== 'none').map((shelf, index) => (
             <Shelf key={index} shelf={SHELFS[shelf]} updateCallback={this.getBooks.bind(this)}
               shelfbooks={this.state.books.filter((book) => book.shelf === shelf)} />
           ))}

@@ -3,4 +3,4 @@ export const SHELFS = {
   wantToRead: 'Want to Read',
   read: 'Read',
   none: 'None',
-}
+};

@@ -48,7 +48,7 @@ class SearchList extends React.Component {
   }
 
   render() {
-    const { category, books, error } = this.state
+    const { category, books, error } = this.state;
     return (
       <div className="shelf">
         <SearchHeader search={this.search.bind(this)} />

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
-import escapeRegExp from 'escape-string-regexp'
+import escapeRegExp from 'escape-string-regexp';
 
 import '../../assets/styles/search.css';
 import '../../App.css';
@@ -27,7 +27,7 @@ class SearchHeader extends React.Component {
   }
 
   updateQuery = (query) => {
-    this.setState({ query })
+    this.setState({ query });
     this.props.search(query);
   }
 
@@ -42,17 +42,17 @@ class SearchHeader extends React.Component {
 
   render() {
 
-    const { query } = this.state
+    const { query } = this.state;
 
-    let showingCategories
+    let showingCategories;
     if (query) {
-      const match = new RegExp(escapeRegExp(query), 'i')
+      const match = new RegExp(escapeRegExp(query), 'i');
       showingCategories = this.categories.filter(category => match.test(category));
     } else {
       showingCategories = this.categories;
     }
 
-    showingCategories.sort()
+    showingCategories.sort();
 
     return (
       <div className='search-books-bar'>
