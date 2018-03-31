@@ -11,9 +11,8 @@ class App extends Component {
         <Route exact path="/" render={() => (
           <Bookshelf />
         )} />
-        <Route path="/search" render={({ history }) => (
-          <SearchList
-          />
+        <Route path="/search" render={() => (
+          <SearchList />
         )
         } />
       </div>

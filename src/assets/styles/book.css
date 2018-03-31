@@ -84,6 +84,10 @@ font-size: 0.8em;
   z-index: 1;
 }
 
+.dropdown-content h3 {
+  padding: 0 16px;
+}
+
 .dropdown-content a {
   color: black;
   padding: 0 16px;

@@ -12,22 +12,24 @@
   border-bottom: 1px solid #dedede;
 }
 .shelf-books {
+  position: relative;
   text-align: center;
+  top: 64px;
 }
 
 /* books grid */
 
 .shelf-grid {
   position: relative;
-  top: 48px;
   list-style-type: none;
-  padding: 0;
+  padding: 0 16px;
   margin: 0;
 
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
 }
+
 .shelf-grid li {
   padding: 10px 15px;
   text-align: left;
