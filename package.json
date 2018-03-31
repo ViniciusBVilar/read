@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "yarn run lint && yarn run react-scripts start",
+    "start": "yarn run react-scripts start",
+    "start:l": "yarn run lint && yarn run react-scripts start",
     "build:start": "react-scripts build && yarn start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",

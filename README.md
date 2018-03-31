@@ -22,9 +22,9 @@ nvm use
 
 ### Installing
 
-To get a development env running:
+Get a development env running.
 
-Under the read root folder run the commands:
+- Under the read root folder run the commands:
 
 ```
 yarn install
@@ -36,7 +36,7 @@ yarn start
 
 ### Coding style tests
 
-To run a es-lint test for react simply run:
+To run a es-lint check run:
 
 ```
 yarn run lint
