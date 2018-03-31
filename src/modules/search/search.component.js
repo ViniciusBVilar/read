@@ -26,7 +26,7 @@ class SearchList extends React.Component {
 
   search = (category) => {
     BooksAPI.search(category).then((books) => books && books.error ?
-      this.setState({ category, error: books.error, books: [] }) : this.setState({ category, books, error: '' }));
+      this.setState({ category, error: books.error, books: [] }) : this.setState({ category, books , error: ''}));
   }
 
   componentDidMount() {

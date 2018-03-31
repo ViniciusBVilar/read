@@ -19,8 +19,11 @@ class Book extends Component {
   }
 
   checkBookshelf(shelf) {
-    return this.props.book.shelf && this.props.book.shelf === shelf ?
-      <p>✓ {shelf}</p> : <p>{shelf}</p>;
+    return !this.props.book.shelf && shelf === 'none' ?
+      <p>✓ {shelf}</p> :
+      this.props.book.shelf === shelf ?
+      <p>✓ {shelf}</p> :
+      <p>{shelf}</p>;
   }
 
   render() {
