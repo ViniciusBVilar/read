@@ -12,8 +12,7 @@ class App extends Component {
           <Bookshelf />
         )} />
         <Route path="/search" render={({ history }) => (
-          <SearchList
-          />
+          <SearchList />
         )
         } />
       </div>

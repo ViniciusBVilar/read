@@ -2,12 +2,10 @@ import React from 'react';
 import * as BooksAPI from '../../data-source/BooksAPI';
 import Book from '../common/book.component';
 import SearchHeader from './search-header.component';
-
 import '../../assets/styles/bookshelf.css';
 import '../../assets/styles/search.css';
 
 class SearchList extends React.Component {
-
 
   state = {
     shelfs: {
@@ -15,6 +13,7 @@ class SearchList extends React.Component {
       wantToRead: [],
       read: []
     },
+    category: '',
     books: [],
     error: ''
   }
@@ -25,9 +24,9 @@ class SearchList extends React.Component {
     read: []
   }
 
-  search(category) {
-    BooksAPI.search(category).then((books) => books.error ?
-      this.setState({ error: books.error, books: [] }) : this.setState({ books , error: ''}));
+  search = (category) => {
+    BooksAPI.search(category).then((books) => books && books.error ?
+      this.setState({ category, error: books.error, books: [] }) : this.setState({ category, books, error: '' }));
   }
 
   componentDidMount() {
@@ -48,11 +47,12 @@ class SearchList extends React.Component {
   }
 
   render() {
-    const { books, error } = this.state
+    const { category, books, error } = this.state
     return (
       <div className="shelf">
         <SearchHeader search={this.search.bind(this)} />
         <div className="shelf-books">
+          <h2>{category}</h2>
           <div className="shelf-grid">
             {(books && !error) &&
               books.map((book, index) => this.renderBook(book, index))}

@@ -25,10 +25,10 @@ class Book extends Component {
 
   render() {
     return (
-      <div className='book'>
-        <img className='book-cover-img' src={this.props.book.imageLinks ?
+      <div className="book">
+        <img className="book-cover-img" src={this.props.book.imageLinks ?
           this.props.book.imageLinks.smallThumbnail :
-          '../assets/img/no-cover-placeholder.jpg'}
+          "../../assets/img/no-cover-placeholder.jpg"}
         alt='Book cover'></img>
         <div className="dropdown">
           <div className="dropdown-content">
