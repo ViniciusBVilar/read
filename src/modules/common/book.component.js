@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { SHELFS } from './shelfs.models';
 import * as BooksAPI from '../../data-source/BooksAPI';
 import '../../assets/styles/book.css';
 
@@ -10,8 +11,6 @@ class Book extends Component {
     updateCallback: PropTypes.func.isRequired,
   };
 
-  shelfs = ['currentlyReading', 'wantToRead', 'read', 'none'];
-
   update(shelf) {
     this.checkBookshelf(shelf);
     BooksAPI.update({ id: this.props.book.id }, shelf)
@@ -20,10 +19,10 @@ class Book extends Component {
 
   checkBookshelf(shelf) {
     return !this.props.book.shelf && shelf === 'none' ?
-      <p>✓ {shelf}</p> :
+      <p>✓ {SHELFS[shelf]}</p> :
       this.props.book.shelf === shelf ?
-      <p>✓ {shelf}</p> :
-      <p>{shelf}</p>;
+      <p>✓ {SHELFS[shelf]}</p> :
+      <p>{SHELFS[shelf]}</p>;
   }
 
   render() {
@@ -36,7 +35,7 @@ class Book extends Component {
         <div className="dropdown">
           <div className="dropdown-content">
             <h3>Move to...</h3>
-            {this.shelfs.map((shelf, index) => (
+            {Object.keys(SHELFS).map((shelf, index) => (
               <a key={index} onClick={() => this.update(shelf)} >{this.checkBookshelf(shelf)}</a>
             ))}
           </div>

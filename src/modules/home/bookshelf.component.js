@@ -3,6 +3,7 @@ import Shelf from './shelf.component';
 import BookshelfHeader from './bookshelf-header.component';
 import * as BooksAPI from '../../data-source/BooksAPI';
 import { Link } from 'react-router-dom';
+import { SHELFS } from '../common/shelfs.models';
 
 import '../../assets/styles/bookshelf.css';
 import '../../App.css';
@@ -21,15 +22,13 @@ class Bookshelf extends React.Component {
     BooksAPI.getAll().then((books) => this.setState({ books }));
   }
 
-  shelfs = ['currentlyReading', 'wantToRead', 'read'];
-
   render() {
     return (
       <div>
         <BookshelfHeader />
         <div className="bookshelf-content">
-          {this.shelfs.map((shelf, index) => (
-            <Shelf key={index} shelf={shelf} updateCallback={this.getBooks.bind(this)}
+          {Object.keys(SHELFS).map((shelf, index) => (
+            <Shelf key={index} shelf={SHELFS[shelf]} updateCallback={this.getBooks.bind(this)}
               shelfbooks={this.state.books.filter((book) => book.shelf === shelf)} />
           ))}
         </div>
