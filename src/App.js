@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import Bookshelf from './modules/home/bookshelf.component';
-import SearchList from './modules/search/search.component';
+import Bookshelf from './modules/home/bookshelf';
+import SearchList from './modules/search/search';
 import { Route } from 'react-router-dom';
 
 class App extends Component {

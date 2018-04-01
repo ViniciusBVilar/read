@@ -1,9 +1,9 @@
 import React from 'react';
-import Shelf from './shelf.component';
-import BookshelfHeader from './bookshelf-header.component';
+import Shelf from './shelf';
+import BookshelfHeader from './bookshelf-header';
 import * as BooksAPI from '../../data-source/BooksAPI';
 import { Link } from 'react-router-dom';
-import { SHELFS } from '../common/shelfs.models';
+import { SHELFS } from '../book/shelfs.models';
 
 import '../../assets/styles/bookshelf.css';
 import '../../App.css';

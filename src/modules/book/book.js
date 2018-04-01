@@ -38,8 +38,8 @@ class Book extends Component {
         <img className="book-cover-img" src={book.imageLinks ?
           book.imageLinks.smallThumbnail :
           /* eslint no-undef: 0 */
-          require('../../assets/img/no-cover-placeholder.jpg')}
-        alt='Book cover'>
+          require("../../assets/img/no-cover-placeholder.jpg")}
+        alt="Book cover">
         </img>
         <div className="dropdown">
           <div className="dropdown-content">
@@ -60,8 +60,8 @@ class Book extends Component {
           <h2 className="book-title">{book.subtitle}</h2>
           {book.authors &&
             book.authors.map((author, index) => (
-              <h1 key={index}
-                className="book-authors">{author}</h1>
+              <p key={index}
+                className="book-authors">{author}</p>
             ))}
         </div>
       </div>

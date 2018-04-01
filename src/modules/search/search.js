@@ -1,18 +1,14 @@
 import React from 'react';
 import * as BooksAPI from '../../data-source/BooksAPI';
-import Book from '../common/book.component';
-import SearchHeader from './search-header.component';
+import Book from '../book/book';
+import SearchHeader from './search-header';
 import '../../assets/styles/bookshelf.css';
 import '../../assets/styles/search.css';
 
 class SearchList extends React.Component {
 
   state = {
-    shelfs: {
-      currentlyReading: [],
-      wantToRead: [],
-      read: []
-    },
+    shelfs: {},
     category: '',
     books: [],
     error: ''

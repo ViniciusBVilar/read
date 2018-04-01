@@ -23,15 +23,27 @@ class SearchHeader extends React.Component {
     'Travel', 'Ultimate', 'Virtual Reality', 'Web Development', 'iOS']
 
   state = {
-    query: ''
+    query: '',
+    showingCategories: []
+  }
+
+  componentWillMount() {
+    this.filterCategories('');
   }
 
   updateQuery = (query) => {
+    this.filterCategories(query);
     this.setState({ query });
     this.props.search(query);
   }
 
-  cleanQuery = () => this.setState({ query: '' })
+  filterCategories = (query) => {
+    const match = new RegExp(escapeRegExp(query), 'i');
+    const showingCategories = query ?
+      this.categories.filter(category => match.test(category)) : this.categories;
+    showingCategories.sort();
+    this.setState({ showingCategories });
+  }
 
   handleSubmit(event) {
     this.props.search(document.getElementById('categoryInput').value);
@@ -41,32 +53,20 @@ class SearchHeader extends React.Component {
   }
 
   render() {
-
-    const { query } = this.state;
-
-    let showingCategories;
-    if (query) {
-      const match = new RegExp(escapeRegExp(query), 'i');
-      showingCategories = this.categories.filter(category => match.test(category));
-    } else {
-      showingCategories = this.categories;
-    }
-
-    showingCategories.sort();
-
+    const { showingCategories, query } = this.state;
     return (
-      <div className='search-books-bar'>
-        <Link className='back-search' to='/'>Back</Link>
-        <form autoComplete='off' onSubmit={this.handleSubmit}>
-          <div className='autocomplete'>
-            <input id='categoryInput' type='text' name='searchField'
-              placeholder='Search books by category' autoFocus
+      <div className="search-books-bar">
+        <Link className="back-search" to="/">Back</Link>
+        <form autoComplete="off" onSubmit={this.handleSubmit}>
+          <div className="autocomplete">
+            <input id="categoryInput" type="text" name="searchField"
+              placeholder="Search books by category" autoFocus
               value={query}
               onChange={event => this.updateQuery(event.target.value)} />
           </div>
         </form>
-        <button id='autoCompleteSubmit' type='submit' className='search' name='searchFieldSubmit'
-          alt='search' onClick={() => this.props.search(document.getElementById('categoryInput').value)} />
+        <button id="autoCompleteSubmit" type="submit" className="search" name="searchFieldSubmit"
+          alt="search" onClick={() => this.props.search(document.getElementById('categoryInput').value)} />
         <p className="auto-complete-title">{showingCategories.length === this.categories.length ?
           'All categories:' : 'Filtered categories:'}</p>
         <div className="auto-complete-container">

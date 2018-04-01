@@ -1,5 +1,5 @@
 import React from 'react';
-import Book from '../common/book.component';
+import Book from '../book/book';
 import PropTypes from 'prop-types';
 import '../../assets/styles/shelf.css';
 
