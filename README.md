@@ -10,7 +10,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 To run this project just:
 
-1. Clone the project or download the files.
+1. Clone the project or download the code base.
 
 2. Assure that you have already installed yarn.
   Visit: https://yarnpkg.com/lang/en/docs/install/
@@ -21,7 +21,7 @@ To run this project just:
 nvm use
 ```
 
-### Installing
+### Installing and Starting
 
 Get a development env running.
 
@@ -48,7 +48,7 @@ yarn run lint
 * [React](https://www.npmjs.com/package/create-react-app)
 * [Yarn](https://yarnpkg.com/en/)
 
-## Authors
+## Author
 
 * **Vinicius Vilar** - [Vinicius](https://github.com/ViniciusBVilar)
 
