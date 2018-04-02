@@ -2,6 +2,7 @@ import React from 'react';
 import * as BooksAPI from '../../data-source/BooksAPI';
 import Book from '../book/book';
 import SearchHeader from './search-header';
+import { ERROR } from './search.models';
 import '../../assets/styles/bookshelf.css';
 import '../../assets/styles/search.css';
 
@@ -29,7 +30,7 @@ class SearchList extends React.Component {
   componentDidMount() {
     BooksAPI.getAll()
       .then((books) => books.map((book) => this.shelfs[book.shelf].push(book)))
-      .then(() => this.setState({ shelfs: this.shelfs }));
+      .then(() => this && this.setState({ shelfs: this.shelfs }));
   }
 
   renderBook(book, index) {
@@ -43,6 +44,12 @@ class SearchList extends React.Component {
     );
   }
 
+  handleError(error) {
+    return error === 'empty query' ?
+      `${ERROR.errorPrefix}${this.state.category}${ERROR.errorSufix}` :
+      error;
+  }
+
   render() {
     const { category, books, error } = this.state;
     return (
@@ -50,11 +57,11 @@ class SearchList extends React.Component {
         <SearchHeader search={this.search.bind(this)} />
         <div className="shelf-books">
           <h2>{category}</h2>
-          <div className="shelf-grid">
-            {(books && !error) &&
-              books.map((book, index) => this.renderBook(book, index))}
-            {(error && books.length <= 0) && <h1>{error}</h1>}
-          </div>
+        </div>
+        <div className="shelf-grid">
+          {(books && !error) &&
+            books.map((book, index) => this.renderBook(book, index))}
+          {(error && books.length <= 0) && <h1>{this.handleError(error)}</h1>}
         </div>
       </div>
     );

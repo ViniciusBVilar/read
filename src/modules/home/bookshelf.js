@@ -3,7 +3,7 @@ import Shelf from './shelf';
 import BookshelfHeader from './bookshelf-header';
 import * as BooksAPI from '../../data-source/BooksAPI';
 import { Link } from 'react-router-dom';
-import { SHELFS } from '../book/shelfs.models';
+import { SHELFS } from '../book/shelfs.model';
 
 import '../../assets/styles/bookshelf.css';
 import '../../App.css';

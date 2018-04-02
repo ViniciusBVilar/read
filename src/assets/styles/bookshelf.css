@@ -24,33 +24,8 @@
   flex: 1;
 }
 
-.bookshelf {
-  padding: 0 10px 20px;
-}
-
-@media (min-width: 600px) {
-  .bookshelf {
-    padding: 0 20px 40px;
-  }
-}
-
 .bookshelf-title {
   border-bottom: 1px solid #dedede;
-}
-.bookshelf-books {
-  text-align: center;
-}
-
-.books-options {
-  width: 100%;
-  padding: 20px 20px 20px 60px;
-  background-image: url('../icons/arrow-drop-down.svg');
-  background-repeat: no-repeat;
-  background-position: 20px center;
-  background-size: 1.2em;
-  font-size: 1.2em;
-  border: 0;
-  outline: none;
 }
 
 input {
@@ -63,55 +38,9 @@ input[type=text] {
   background-color: #f1f1f1;
   width: 100%;
 }
-input[type=submit] {
-  color: #fff;
-  cursor: pointer;
-}
 
 .autocomplete {
   min-width: 250px
-}
-.autocomplete-items {
-  position: absolute;
-  border: 1px solid #d4d4d4;
-  border-bottom: none;
-  border-top: none;
-  z-index: 99;
-  /*position the autocomplete items to be the same width as the container:*/
-  top: 100%;
-  left: 0;
-  right: 0;
-}
-.autocomplete-items div {
-  padding: 10px;
-  cursor: pointer;
-  background-color: #fff;
-  border-bottom: 1px solid #d4d4d4;
-}
-.autocomplete-items div:hover {
-  /*when hovering an item:*/
-  background-color: #e9e9e9;
-}
-.autocomplete-active {
-  /*when navigating through the items using the arrow keys:*/
-  background-color: DodgerBlue !important;
-  color: #ffffff;
-}
-
-/* books grid */
-
-.books-grid {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-.books-grid li {
-  padding: 10px 15px;
-  text-align: left;
 }
 
 /* FAB */
