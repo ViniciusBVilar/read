@@ -6,6 +6,7 @@ class Image extends Component {
 
   static propTypes = {
     alt: PropTypes.string.isRequired,
+    src: PropTypes.string.isRequired,
   };
 
   render() {
@@ -14,7 +15,7 @@ class Image extends Component {
       <img className="book-cover-img" src={src ?
         src :
         /* eslint no-undef: 0 */
-        require("../../../assets/img/no-cover-placeholder.jpg")}
+        require('../../../assets/img/no-cover-placeholder.jpg')}
         alt={this.props.alt}>
       </img>
     );

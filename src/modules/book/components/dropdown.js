@@ -5,7 +5,7 @@ import '../../../assets/styles/book.css';
 
 class Dropdown extends React.Component {
 
-  static propTypes ={
+  static propTypes = {
     book: PropTypes.object.isRequired,
     updateCallback: PropTypes.func.isRequired,
   }
@@ -22,7 +22,7 @@ class Dropdown extends React.Component {
           <h3>Move to...</h3>
           {this.props.book && Object.keys(SHELFS).map((shelf, index) => (
             <a key={index} id={`${this.props.book.id}${shelf}`}
-            onClick={() => this.props.updateCallback(shelf)} >
+              onClick={() => this.props.updateCallback(shelf)} >
               {this.checkBookshelf(shelf)}{SHELFS[shelf]}
             </a>
           ))}
@@ -31,8 +31,8 @@ class Dropdown extends React.Component {
           <div className="select" />
         </div>
       </div>
-    )
-    }
+    );
+  }
 }
 
 export default Dropdown;

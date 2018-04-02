@@ -28,7 +28,7 @@ class Book extends Component {
     BooksAPI.update({ id: bookId }, shelf)
       .then((books) => this.props.updateCallback(books))
       .then(() => this.updateCheck(bookId, currentlyBookshelf, shelf))
-      .then(() => this.updateBook(shelf))
+      .then(() => this.updateBook(shelf));
   }
 
   updateCheck = (bookId, currentlyBookshelf, shelf) => {
@@ -50,10 +50,10 @@ class Book extends Component {
       <div className="book">
         <Image src={book.imageLinks &&
           book.imageLinks.smallThumbnail}
-          alt="Book cover"
+        alt="Book cover"
         />
-        <Dropdown book={book} updateCallback={this.update.bind(this)}/>
-        <BookInfo book={book}/>
+        <Dropdown book={book} updateCallback={this.update.bind(this)} />
+        <BookInfo book={book} />
       </div>
     );
   }
