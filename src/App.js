@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './App.css';
 import Bookshelf from './modules/home/bookshelf';
 import SearchList from './modules/search/search';
 import { Route } from 'react-router-dom';

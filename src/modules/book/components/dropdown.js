@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { SHELFS } from './shelfs.model';
-import '../../assets/styles/book.css';
+import { SHELFS } from '../../../models/shelfs.model';
+import '../../../assets/styles/book.css';
 
 class Dropdown extends React.Component {
 
@@ -10,7 +10,7 @@ class Dropdown extends React.Component {
     updateCallback: PropTypes.func.isRequired,
   }
 
-  checkBookshelf(shelf) {
+  checkBookshelf = (shelf) => {
     return !this.props.book.shelf && shelf === 'none' ? '✓ ' :
       this.props.book.shelf === shelf ? '✓ ' : '';
   }

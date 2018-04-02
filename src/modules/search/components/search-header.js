@@ -2,10 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
 import escapeRegExp from 'escape-string-regexp';
-import { CATEGORIES } from './search.models';
-
-import '../../assets/styles/search.css';
-import '../../App.css';
+import { CATEGORIES } from '../search.models';
+import '../../../assets/styles/search.css';
 
 class SearchHeader extends React.Component {
 
@@ -36,7 +34,7 @@ class SearchHeader extends React.Component {
     this.setState({ showingCategories });
   }
 
-  handleSubmit(event) {
+  handleSubmit = (event) => {
     this.props.search(document.getElementById('categoryInput').value);
     //TODO: fix to prevent default form action. The following code is not working
     event.preventDefault();

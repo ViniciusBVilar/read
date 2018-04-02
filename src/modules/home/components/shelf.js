@@ -1,7 +1,7 @@
 import React from 'react';
-import Book from '../book/book';
+import Book from '../../book/book';
 import PropTypes from 'prop-types';
-import '../../assets/styles/shelf.css';
+import '../../../assets/styles/shelf.css';
 
 class Shelf extends React.Component {
 

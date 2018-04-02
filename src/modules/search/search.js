@@ -1,7 +1,7 @@
 import React from 'react';
 import * as BooksAPI from '../../data-source/BooksAPI';
 import Book from '../book/book';
-import SearchHeader from './search-header';
+import SearchHeader from './components/search-header';
 import { ERROR } from './search.models';
 import '../../assets/styles/bookshelf.css';
 import '../../assets/styles/search.css';
@@ -21,19 +21,19 @@ class SearchList extends React.Component {
     read: []
   }
 
-  search = (category) => {
-    BooksAPI.search(category).then((books) => books && books.error ?
-      this.setState({ category, error: books.error, books: [] }) :
-      this.setState({ category, books , error: ''}));
-  }
-
   componentDidMount() {
     BooksAPI.getAll()
       .then((books) => books.map((book) => this.shelfs[book.shelf].push(book)))
-      .then(() => this && this.setState({ shelfs: this.shelfs }));
+      .then(() => this.setState({ shelfs: this.shelfs }));
   }
 
-  renderBook(book, index) {
+  search = (category) => {
+    BooksAPI.search(category).then((books) => books && books.error ?
+      this.setState({ category, error: books.error, books: [] }) :
+      this.setState({ category, books, error: '' }));
+  }
+
+  renderBook = (book, index) => {
     this.state.shelfs &&
       Object.keys(this.state.shelfs).map((shelf) => this.state.shelfs[shelf].forEach(
         (b) => book.id === b.id && (book['shelf'] = b.shelf)
@@ -44,7 +44,7 @@ class SearchList extends React.Component {
     );
   }
 
-  handleError(error) {
+  handleError = (error) => {
     return error === 'empty query' ?
       `${ERROR.errorPrefix}${this.state.category}${ERROR.errorSufix}` :
       error;
@@ -56,7 +56,7 @@ class SearchList extends React.Component {
       <div className="shelf">
         <SearchHeader search={this.search.bind(this)} />
         <div className="shelf-books">
-          <h2>{category}</h2>
+          <h1>{category}</h1>
         </div>
         <div className="shelf-grid">
           {(books && !error) &&

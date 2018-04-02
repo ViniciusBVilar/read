@@ -13,6 +13,11 @@
   background: #2e7c31;
   text-align: left;
 }
+
+.bookshelf-title a {
+  text-decoration: none;
+}
+
 .bookshelf-title h1 {
   font-weight: 400;
   margin: 0;

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import '../../assets/styles/book.css';
+import '../../../assets/styles/book.css';
 
 class BookInfo extends React.Component {
 
