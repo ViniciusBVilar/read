@@ -1,22 +1,21 @@
 .book {
   margin: 16px;
 }
-.book-title,
-.book-authors {
-font-size: 0.8em;
-}
+
 .book-title {
-margin-top: 10px;
-}
-.book-authors {
-color: #999;
+  font-size: 1.5em;
+  font-weight: normal;
+  margin-top: 10px;
 }
 
-.book-top {
-  position: relative;
-  height: 200px;
-  display: flex;
-  align-items: flex-end;
+.book-subtitle {
+  font-size: 0.8em;
+  font-weight: bold;
+}
+
+.book-authors {
+  font-size: 0.8em;
+  color: #999;
 }
 
 /* Books "FAB" */
@@ -44,19 +43,12 @@ color: #999;
 
 /* book cover */
 
-.book-cover {
-box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-background: #eee;
-}
-
-.book-title-container {
+.book-info-container {
   max-width: 200px;
 }
 
-.book-cover-title {
-padding: 20px 10px 0;
-text-align: center;
-font-size: 0.8em;
+.book-title-container {
+  text-align: center
 }
 
 .book-cover-img {
@@ -90,7 +82,7 @@ font-size: 0.8em;
 
 .dropdown-content a {
   color: black;
-  padding: 0 16px;
+  padding: 8px 16px;
   text-decoration: none;
   display: block;
   cursor: pointer;
@@ -102,8 +94,4 @@ font-size: 0.8em;
 
 .dropdown:hover .dropdown-content {
   display: block;
-}
-
-.dropdown:hover {
-  background-color: #3e8e41;
 }

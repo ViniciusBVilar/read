@@ -1,5 +1,7 @@
 .shelf {
   padding: 0 10px 20px;
+  position: relative;
+  top: 64px;
 }
 
 @media (min-width: 600px) {
@@ -12,9 +14,7 @@
   border-bottom: 1px solid #dedede;
 }
 .shelf-books {
-  position: relative;
   text-align: center;
-  top: 64px;
 }
 
 /* books grid */
