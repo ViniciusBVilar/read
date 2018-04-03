@@ -48,7 +48,7 @@ yarn run lint
 * [React](https://www.npmjs.com/package/create-react-app)
 * [Yarn](https://yarnpkg.com/en/)
 
-## Author
+## Authors
 
 * **Vinicius Vilar** - [Vinicius](https://github.com/ViniciusBVilar)
 
