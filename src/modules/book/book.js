@@ -14,38 +14,24 @@ class Book extends Component {
     updateCallback: PropTypes.func.isRequired,
   };
 
-  state = {
-    book: {}
-  }
-
-  componentWillMount() {
-    this.setState({ book: this.props.book });
-  }
-
   update = (shelf) => {
-    const bookId = this.state.book.id;
-    const currentlyBookshelf = this.state.book.shelf ? this.state.book.shelf : 'none';
+    const bookId = this.props.book.id;
     BooksAPI.update({ id: bookId }, shelf)
-      .then((books) => this.props.updateCallback(books))
-      .then(() => this.updateCheck(bookId, currentlyBookshelf, shelf))
-      .then(() => this.updateBook(shelf));
+    .then((books) => this.props.updateCallback())
+    .then(() => this.updateCheck(bookId, shelf))
+    .then(() => this.props.book['shelf'] = shelf);
   }
 
-  updateCheck = (bookId, currentlyBookshelf, shelf) => {
+  updateCheck = (bookId, shelf) => {
+    const currentlyBookshelf = this.props.book.shelf ? this.props.book.shelf : 'none';
     document.getElementById(`${bookId}${shelf}`) &&
       (document.getElementById(`${bookId}${shelf}`).textContent = `✓ ${SHELFS[shelf]}`);
-    document.getElementById(`${bookId}${currentlyBookshelf}`) &&
+    currentlyBookshelf !== shelf && document.getElementById(`${bookId}${currentlyBookshelf}`) &&
       (document.getElementById(`${bookId}${currentlyBookshelf}`).textContent = `${SHELFS[currentlyBookshelf]}`);
   }
 
-  updateBook = (shelf) => {
-    let book = this.state.book;
-    book['shelf'] = shelf;
-    this.setState({ book });
-  }
-
   render() {
-    const book = this.state.book ? this.state.book : {};
+    const book = this.props.book ? this.props.book : {};
     return (
       <div className="book">
         <Image src={book.imageLinks &&
