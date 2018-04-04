@@ -28,9 +28,11 @@ class SearchList extends React.Component {
   }
 
   search = (category) => {
-    BooksAPI.search(category).then((books) => books && books.error ?
-      this.setState({ category, error: books.error, books: [] }) :
-      this.setState({ category, books, error: '' }));
+    category ?
+      BooksAPI.search(category).then((books) => books && books.error ?
+        this.setState({ category, error: books.error, books: [] }) :
+        this.setState({ category, books, error: '' })) :
+      this.setState({category: '', books: [], error: ''});
   }
 
   renderBook = (book, index) => {
@@ -61,7 +63,8 @@ class SearchList extends React.Component {
         <div className="shelf-grid">
           {(books && !error) &&
             books.map((book, index) => this.renderBook(book, index))}
-          {(error && books.length <= 0) && <h1>{this.handleError(error)}</h1>}
+          {(error && books.length <= 0) &&
+            <h1>{this.handleError(error)}</h1>}
         </div>
       </div>
     );

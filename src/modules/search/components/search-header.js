@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
 import escapeRegExp from 'escape-string-regexp';
 import { CATEGORIES } from '../search.models';
+import { DebounceInput } from 'react-debounce-input';
 import '../../../assets/styles/search.css';
 
 class SearchHeader extends React.Component {
@@ -47,12 +48,15 @@ class SearchHeader extends React.Component {
         <div className="search-bar-container">
           <form autoComplete="off" onSubmit={this.handleSubmit}>
             <div className="autocomplete">
-              <input id="categoryInput" type="text" name="searchField"
-                placeholder="Search books by category" autoFocus
-                value={query}
-                onChange={event => this.updateQuery(event.target.value)} />
+                <DebounceInput
+                  id="categoryInput" type="text" name="searchField"
+                  placeholder="Search books by category" autoFocus
+                  value={query}
+                  minLength={1}
+                  debounceTimeout={300}
+                  onChange={event => this.updateQuery(event.target.value)} />
               <input id="autoCompleteSubmit" type="submit" className="search" name="searchFieldSubmit"
-                alt="search"/>
+                alt="search" />
             </div>
           </form>
           <p className="auto-complete-title">{showingCategories.length === CATEGORIES.length ?
