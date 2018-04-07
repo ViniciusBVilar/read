@@ -48,13 +48,13 @@ class SearchHeader extends React.Component {
         <div className="search-bar-container">
           <form autoComplete="off" onSubmit={this.handleSubmit}>
             <div className="autocomplete">
-                <DebounceInput
-                  id="categoryInput" type="text" name="searchField"
-                  placeholder="Search books by category" autoFocus
-                  value={query}
-                  minLength={1}
-                  debounceTimeout={300}
-                  onChange={event => this.updateQuery(event.target.value)} />
+              <DebounceInput
+                id="categoryInput" type="text" name="searchField"
+                placeholder="Search books by category" autoFocus
+                value={query}
+                minLength={1}
+                debounceTimeout={300}
+                onChange={event => this.updateQuery(event.target.value)} />
               <input id="autoCompleteSubmit" type="submit" className="search" name="searchFieldSubmit"
                 alt="search" />
             </div>
