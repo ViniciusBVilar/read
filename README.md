@@ -47,6 +47,7 @@ yarn run lint
 
 * [React](https://www.npmjs.com/package/create-react-app)
 * [Yarn](https://yarnpkg.com/en/)
+* [EditorConfig](http://editorconfig.org)
 
 ## Authors
 

@@ -41,11 +41,11 @@ class SearchList extends React.Component {
   }
 
   updateBook(shelfs) {
-    this.setState({ shelfs })
+    this.setState({ shelfs });
   }
 
   renderBook = (book, index) => {
-    let shelfs = this.state.shelfs
+    let shelfs = this.state.shelfs;
     shelfs &&
       Object.keys(shelfs).map((shelf) => shelfs[shelf].forEach(
         shelfBobkId => book.id === shelfBobkId && (book.shelf = shelf)

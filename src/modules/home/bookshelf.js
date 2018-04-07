@@ -22,7 +22,7 @@ class Bookshelf extends React.Component {
 
   update = (bookId, shelf) => {
     BooksAPI.update({ id: bookId }, shelf)
-    .then((books) => this.getBooks());
+      .then((books) => this.getBooks());
   }
 
   render() {
