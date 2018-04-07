@@ -54,14 +54,14 @@
   display: block
 }
 
-.auto-complete-container-select {
-  height: 40px;
+.auto-complete-select {
+  height: 32px;
   font-size: larger;
   margin: 4px 16px;
 }
 
 .auto-complete-title {
-  margin: 8px 0px 8px 16px;
+  margin: 11px 0px;
 }
 
 .autocomplete {

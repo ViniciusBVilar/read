@@ -62,7 +62,7 @@ class SearchHeader extends React.Component {
           <p className="auto-complete-title">{showingCategories.length === CATEGORIES.length ?
             'All categories:' : 'Filtered categories:'}</p>
           <div className="auto-complete-container">
-            <select className="auto-complete-container"
+            <select className="auto-complete-select"
               onChange={(event) => this.props.search(event.target.value)}>
               {showingCategories.map((category, index) => (
                 <option key={index}>
