@@ -54,10 +54,10 @@
   display: block
 }
 
-.auto-complete-container select {
+.auto-complete-container-select {
   height: 40px;
   font-size: larger;
-  margin: 0 16px 0 16px;
+  margin: 4px 16px;
 }
 
 .auto-complete-title {

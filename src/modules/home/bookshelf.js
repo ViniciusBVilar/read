@@ -20,13 +20,18 @@ class Bookshelf extends React.Component {
     BooksAPI.getAll().then((books) => this.setState({ books }));
   }
 
+  update = (bookId, shelf) => {
+    BooksAPI.update({ id: bookId }, shelf)
+    .then((books) => this.getBooks());
+  }
+
   render() {
     return (
       <div>
         <BookshelfHeader />
         <div className="bookshelf-content">
           {Object.keys(SHELFS).filter(shelf => shelf !== 'none').map((shelf, index) => (
-            <Shelf key={index} shelf={SHELFS[shelf]} updateCallback={this.getBooks.bind(this)}
+            <Shelf key={index} shelf={SHELFS[shelf]} updateCallback={this.update.bind(this)}
               shelfbooks={this.state.books.filter((book) => book.shelf === shelf)} />
           ))}
         </div>

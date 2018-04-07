@@ -23,7 +23,7 @@ class SearchList extends React.Component {
 
   componentDidMount() {
     BooksAPI.getAll()
-      .then((books) => books.map((book) => this.shelfs[book.shelf].push(book)))
+      .then((books) => books.map((book) => this.shelfs[book.shelf].push(book.id)))
       .then(() => this.setState({ shelfs: this.shelfs }));
   }
 
@@ -32,17 +32,26 @@ class SearchList extends React.Component {
       BooksAPI.search(category).then((books) => books && books.error ?
         this.setState({ category, error: books.error, books: [] }) :
         this.setState({ category, books, error: '' })) :
-      this.setState({category: '', books: [], error: ''});
+      this.setState({ category: '', books: [], error: '' });
+  }
+
+  update = (bookId, shelf) => {
+    BooksAPI.update({ id: bookId }, shelf)
+      .then((books) => this.updateBook(books));
+  }
+
+  updateBook(shelfs) {
+    this.setState({ shelfs })
   }
 
   renderBook = (book, index) => {
-    this.state.shelfs &&
-      Object.keys(this.state.shelfs).map((shelf) => this.state.shelfs[shelf].forEach(
-        (b) => book.id === b.id && (book['shelf'] = b.shelf)
+    let shelfs = this.state.shelfs
+    shelfs &&
+      Object.keys(shelfs).map((shelf) => shelfs[shelf].forEach(
+        shelfBobkId => book.id === shelfBobkId && (book.shelf = shelf)
       ));
-
     return (
-      <Book key={index} book={book} updateCallback={() => { }} />
+      <Book key={index} book={book} updateCallback={this.update.bind(this)} />
     );
   }
 
