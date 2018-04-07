@@ -6,17 +6,23 @@ class Image extends Component {
 
   static propTypes = {
     alt: PropTypes.string.isRequired,
+    smallThumbnail: PropTypes.string.isRequired,
+    thumbnail: PropTypes.string.isRequired,
   };
 
   render() {
-    const src = this.props.src;
+    const { alt, smallThumbnail, thumbnail } = this.props;
     return (
-      <img className="book-cover-img" src={src ?
-        src :
-        /* eslint no-undef: 0 */
-        require("../../../assets/img/no-cover-placeholder.jpg")}
-        alt={this.props.alt}>
-      </img>
+      <a href={thumbnail ?
+        thumbnail : ''}
+        target="_blank">
+        <img className="book-cover-img" src={smallThumbnail ?
+          smallThumbnail :
+          /* eslint no-undef: 0 */
+          require('../../../assets/img/no-cover-placeholder.jpg')}
+          alt={alt}>
+        </img>
+      </a>
     );
   }
 }

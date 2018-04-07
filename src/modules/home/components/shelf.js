@@ -18,9 +18,7 @@ class Shelf extends React.Component {
           <h1 className="shelf-title">{this.props.shelf}</h1>
           <div className="shelf-grid">
             {this.props.shelfbooks.map((book, index) => (
-              <li key={index}>
-                <Book book={book} updateCallback={this.props.updateCallback.bind(this)} />
-              </li>
+              <Book key={index} book={book} updateCallback={this.props.updateCallback.bind(this)} />
             ))}
           </div>
         </div>
